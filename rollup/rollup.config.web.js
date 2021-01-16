@@ -1,7 +1,7 @@
-import json from 'rollup-plugin-json'
-import alias from 'rollup-plugin-alias'
-import commonjs from 'rollup-plugin-commonjs'
-import resolve from 'rollup-plugin-node-resolve'
+import json from '@rollup/plugin-json'
+import alias from '@rollup/plugin-alias'
+import commonjs from '@rollup/plugin-commonjs'
+import resolve from '@rollup/plugin-node-resolve'
 import base from './rollup.config.base'
 
 export default {

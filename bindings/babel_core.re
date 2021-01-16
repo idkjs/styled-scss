@@ -22,11 +22,11 @@ module Options = {
 [@bs.module "@babel/core"]
 external transform :
   (string, Options.options, Babel_generator.output => unit) => unit =
-  "";
+  "transform";
 
 [@bs.module "@babel/core"]
 external transformSync : (string, Options.options) => Babel_generator.output =
-  "";
+  "transformSync";
 
 [@bs.module "@babel/core"]
 external transformFromAst :
@@ -37,9 +37,9 @@ external transformFromAst :
     Babel_generator.output => unit
   ) =>
   unit =
-  "";
+  "transformFromAst";
 
 [@bs.module "@babel/core"]
 external transformFromAstSync :
   (Babel_types.node, string, Options.options) => Babel_generator.output =
-  "";
+  "transformFromAstSync";

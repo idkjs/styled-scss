@@ -36,18 +36,18 @@ let program =
   |. Commander.parse(Commander.Process.argv)
   |. Flags.decode;
 
-let files = Flags.args(program);
+let files = Flags.argsGet(program);
 
-let debug = Flags.debug(program) |. Option.getWithDefault(false);
+let debug = Flags.debugGet(program) |. Option.getWithDefault(false);
 
-let optimize = Flags.optimize(program) |. Option.getWithDefault(false);
+let optimize = Flags.optimizeGet(program) |. Option.getWithDefault(false);
 
 let runtime =
-  Flags.runtime(program)
+  Flags.runtimeGet(program)
   |. Option.flatMap(Compiler.runtimeFromJs)
   |. Option.getWithDefault(`Styled);
 
-let types = Flags.types(program) |. Option.flatMap(Compiler.typesFromJs);
+let types = Flags.typesGet(program) |. Option.flatMap(Compiler.typesFromJs);
 
 if (Array.length(files) == 0) {
   Js.Console.error("Must provide more than one file.");

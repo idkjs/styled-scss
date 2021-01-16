@@ -12,5 +12,6 @@
     "in-source": true
   },
   "refmt": 3,
-  "suffix": ".bs.js"
+  "suffix": ".bs.js",
+ "warnings": { "number": "-30" }
 }

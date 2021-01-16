@@ -16,16 +16,16 @@ type options = {
 
 module Buffer = {
   type t;
-  [@bs.send] external toString : (t, unit) => string = "";
+  [@bs.send] external toString : (t, unit) => string = "toString";
 };
 
 module Result = {
   type t;
   type error;
-  [@bs.get] external css : t => Buffer.t = "";
+  [@bs.get] external css : t => Buffer.t = "css";
 };
 
 [@bs.module "sass"]
-external render : (options, (Result.error, Result.t) => unit) => unit = "";
+external render : (options, (Result.error, Result.t) => unit) => unit = "render";
 
-[@bs.module "sass"] external renderSync : options => Result.t = "";
+[@bs.module "sass"] external renderSync : options => Result.t = "renderSync";

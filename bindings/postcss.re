@@ -22,9 +22,9 @@ module Internal = {
     let rule = "rule";
   };
   type node = {. "type": string};
-  [@bs.module "postcss"] external parse : (string, Options.t) => node = "";
+  [@bs.module "postcss"] external parse : (string, Options.t) => node = "parse";
   [@bs.module "postcss"]
-  external stringify : (node, string => unit) => unit = "";
+  external stringify : (node, string => unit) => unit = "stringify";
 };
 
 type loc = {

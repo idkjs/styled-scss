@@ -14,10 +14,10 @@ let parseCondition = conditionStr => {
   Traverse.traverse(
     parsed,
     Traverse.traverser(~enter=path => {
-      let node = Traverse.Path.node(path);
+      let node = Traverse.Path.nodeGet(path);
       if (T.isIdentifier(node)) {
         let identifier = T.asIdentifier(node);
-        let identifierName = T.Identifier.name(identifier);
+        let identifierName = T.Identifier.nameGet(identifier);
         let isSassVariable = Js.String.startsWith("$", identifierName);
         if (isSassVariable) {
           T.Identifier.nameSet(identifier, rawPropName(identifierName));
@@ -28,12 +28,12 @@ let parseCondition = conditionStr => {
 
   T.assertFile(parsed);
   let parsedFile = T.asFile(parsed);
-  T.assertProgram(T.File.program(parsedFile));
-  let parsedProgram = T.asProgram(T.File.program(parsedFile));
-  let parsedExpression = Array.getExn(T.Program.body(parsedProgram), 0);
+  T.assertProgram(T.File.programGet(parsedFile));
+  let parsedProgram = T.asProgram(T.File.programGet(parsedFile));
+  let parsedExpression = Array.getExn(T.Program.bodyGet(parsedProgram), 0);
   T.assertExpressionStatement(parsedExpression);
   let expressionStatement = T.asExpressionStatement(parsedExpression);
-  let conditionNode = T.ExpressionStatement.expression(expressionStatement);
+  let conditionNode = T.ExpressionStatement.expressionGet(expressionStatement);
 
   conditionNode;
 };
